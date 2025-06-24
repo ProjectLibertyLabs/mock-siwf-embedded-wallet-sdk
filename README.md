@@ -30,6 +30,16 @@ const startSiwfResponse = await startSiwf(
 };
 ```
 
+## `startSiwf` Parameters
+
+- `userAddress`: The wallet address of the user
+- `signatureFn`: Connect the specific embedded wallet to the SDK (see Signature Function below)
+- `gatewayFetchFn`: Connect the SDK to the Frequency Gateway Account Service (see Gateway Fetch Function below)
+- `userHandle`: (Optional, New User Only) The user supplied handle to register
+- `email`: (Optional, New User Only) The user's email address for generating the values for the Recovery System
+- `msaCreationCallback`: (Optional) Will be called with the final MSA Id and Handle for the user (see MSA Callback Function below)
+
+
 ## Function Details
 
 ### Signature Function
@@ -63,6 +73,23 @@ type GatewayFetchFn = (
   path: `/v1/accounts/account/${Address}` | "/v2/accounts/siwf",
   body?: undefined | { authorizationPayload: string; },
 ) => Promise<Response>;
+```
+
+### MSA Callback Function
+
+When a new user signs up, the allocation of the MSA Id on-chain can take some time. This callback will be called once the allocation is completed, or if the user already has an account, it will return the value without waiting.
+
+```TypeScript
+interface AccountResponse {
+  msaId: string;
+  handle?: {
+    base_handle: string;
+    canonical_base: string;
+    suffix: number;
+  };
+}
+
+type MsaCreationCallbackFn = (account: AccountResponse) => void;
 ```
 
 ## What does it mock?
