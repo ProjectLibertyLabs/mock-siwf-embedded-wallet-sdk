@@ -2,6 +2,8 @@
 
 Turnkey Embedded Wallet is easy to integrate with the SIWF Embedded Wallet SDK, but depends on the tooling used and your particular Turnkey setup.
 
+Note that each signup requires up to four signatures while a simple login with no delegation changes has just a single signature.
+
 ## Signature Function
 
 The SDK uses a Signature Function to connect any Embedded Wallet with the SDK. It follows the same interface as the [`window.ethereum.request`](https://docs.metamask.io/wallet/reference/provider-api/#request) method, although is reduced in scope.

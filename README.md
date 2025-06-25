@@ -61,6 +61,7 @@ This function will only call two endpoints, but you must map those endpoints to 
 #### Endpoints Called
 - [POST: /v2/accounts/siwf](https://projectlibertylabs.github.io/gateway/account/#tag/v2accounts/operation/AccountsControllerV2_postSignInWithFrequency) using the `authorizationPayload` version
 - [GET: /v1/accounts/account/{UserControlKey}](https://projectlibertylabs.github.io/gateway/account/#tag/v1accounts/operation/AccountsControllerV1_getAccountForAccountId) to fetch account details
+- [GET: /v1/frequency/blockInfo](https://projectlibertylabs.github.io/gateway/account/#tag/v1frequency/operation/FrequencyControllerV1_getBlockInfo) to fetch current block information for signature expiration
 
 #### TypeScript Types
 

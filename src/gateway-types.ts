@@ -32,6 +32,11 @@ interface GraphKeySubject {
   keyType: string;
 }
 
+export interface GatewayBlockInfoResponse {
+  blockNumber: number;
+  finalizedBlockNumber: number;
+}
+
 export interface GatewaySiwfResponse {
   // The ss58 encoded MSA Control Key of the login.
   controlKey: string;

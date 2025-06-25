@@ -66,7 +66,10 @@ export type GatewayFetchGetAccountFn = (
 
 export type GatewayFetchFn = (
   method: "GET" | "POST",
-  path: `/v1/accounts/account/${Address}` | "/v2/accounts/siwf",
+  path:
+    | `/v1/accounts/account/${Address}`
+    | "/v2/accounts/siwf"
+    | "/v1/frequency/blockInfo",
   body?: GatewayFetchBody,
 ) => Promise<Response>;
 
@@ -179,6 +182,12 @@ export async function startSiwf(
       throw new Error("signUpEmail missing for non-existent account.");
     if (!signUpHandle)
       throw new Error("signUpHandle missing for non-existent account.");
+
+    // Get the current block number to make the expiration date
+    const _ignoreForMock = await gatewayFetchFn(
+      "GET",
+      "/v1/frequency/blockInfo",
+    );
 
     // Generate Graph Key
     // Generate Recovery Key
