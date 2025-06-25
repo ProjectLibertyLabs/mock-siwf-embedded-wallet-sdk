@@ -39,7 +39,6 @@ const startSiwfResponse = await startSiwf(
 - `email`: (Optional, New User Only) The user's email address for generating the values for the Recovery System
 - `msaCreationCallback`: (Optional) Will be called with the final MSA Id and Handle for the user (see MSA Callback Function below)
 
-
 ## Function Details
 
 ### Signature Function
@@ -91,6 +90,10 @@ interface AccountResponse {
 
 type MsaCreationCallbackFn = (account: AccountResponse) => void;
 ```
+
+## Turnkey Embedded Wallet
+
+Examples and details for the Turnkey Embedded Wallet can be found [Turnkey.md](./Turnkey.md).
 
 ## What does it mock?
 
