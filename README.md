@@ -70,8 +70,11 @@ type Address = string;
 
 type GatewayFetchFn = (
   method: "GET" | "POST",
-  path: `/v1/accounts/account/${Address}` | "/v2/accounts/siwf",
-  body?: undefined | { authorizationPayload: string; },
+  path:
+    | `/v1/accounts/account/${Address}`
+    | "/v2/accounts/siwf"
+    | "/v1/frequency/blockInfo",
+  body?: GatewayFetchBody,
 ) => Promise<Response>;
 ```
 
