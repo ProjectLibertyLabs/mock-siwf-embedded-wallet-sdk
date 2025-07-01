@@ -48,9 +48,6 @@ const signatureFn = async (request) => {
   }
 };
 
-// Alternative
-// If you already have the
-
 // Use startSiwf
 const result = await startSiwf(
   viemAccount.address,

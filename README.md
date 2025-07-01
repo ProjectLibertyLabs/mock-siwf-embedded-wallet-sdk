@@ -78,6 +78,28 @@ type GatewayFetchFn = (
 ) => Promise<Response>;
 ```
 
+#### Example
+
+In this example, it uses the [`Fetch API`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) and assumes two variables:
+
+- `BACKEND_BASE_URL`: The backend base URL that is proxying the Gateway Account Service
+- `BACKEND_AUTHENTICATION_HEADERS`: Example authentication method via headers
+
+```TypeScript
+const gatewayFetchFn: GatewayFetchFn = (
+  method,
+  path,
+  body?: GatewayFetchBody,
+) => {
+  const url = new URL(BACKEND_BASE_URL + path);
+  return fetch(url, {
+    method,
+    body,
+    headers: BACKEND_AUTHENTICATION_HEADERS,
+  });
+};
+```
+
 ### MSA Callback Function
 
 When a new user signs up, the allocation of the MSA Id on-chain can take some time. This callback will be called once the allocation is completed, or if the user already has an account, it will return the value without waiting.
